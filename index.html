@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLASH NOVA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    background: black;
+    color: white;
+}
+
+/* FONDO */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('fondo.jpg') center/cover no-repeat;
+    filter: brightness(0.3);
+    z-index: -1;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #00ffe1;
+    font-size: 3rem;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px;
+}
+
+/* GALERÍA */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.item {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.item img,
+.item video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* RADIO */
+.radio {
+    text-align: center;
+    padding: 60px;
+}
+
+.radio a {
+    background: #00ffe1;
+    color: black;
+    padding: 15px 25px;
+    text-decoration: none;
+}
+
+/* CONTACTO */
+.contact {
+    text-align: center;
+    padding: 40px;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #25D366;
+    padding: 15px;
+    border-radius: 50%;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header>
+    <h1>FLASH NOVA</h1>
+</header>
+
+<section class="hero">
+    <h2>si no vende no es creativo</h2>
+</section>
+
+<!-- 🔥 GALERÍA -->
+<section>
+    <h2 style="text-align:center;">Trabajos</h2>
+
+    <div class="gallery">
+
+        <!-- 📸 FOTOS -->
+        <div class="item"><img src="foto1.jpg"></div>
+        <div class="item"><img src="foto2.jpg"></div>
+        <div class="item"><img src="foto3.jpg"></div>
+
+        <!-- 🎥 VIDEOS -->
+        <div class="item">
+            <video controls class="video-item">
+                <source src="video.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="item">
+            <video controls class="video-item">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="item">
+            <video controls class="video-item">
+                <source src="video3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+    </div>
+</section>
+
+<!-- 📻 RADIO -->
+<section class="radio">
+    <h2>RADIOACTIVA</h2>
+    <p>Sábados de 10 a 12</p>
+
+    <a href="https://es.streema.com/radios/Infovillegas#" target="_blank">
+        ESCUCHAR EN VIVO
+    </a>
+</section>
+
+<!-- 📞 CONTACTO -->
+<section class="contact">
+    <h2>Contacto</h2>
+    <p>📞 +54 9 3388 415961</p>
+    <p>@flashnova.publicidad</p>
+</section>
+
+<!-- 🎧 MÚSICA -->
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💬 WHATSAPP -->
+<a href="https://wa.me/3388529085" class="whatsapp">💬</a>
+
+<script>
+
+/* ▶️ INICIAR MÚSICA */
+document.addEventListener("click", () => {
+    document.getElementById("musica").play();
+}, { once: true });
+
+/* 🎬 CONTROL AUTOMÁTICO VIDEO → MÚSICA */
+const musica = document.getElementById("musica");
+const videos = document.querySelectorAll(".video-item");
+
+videos.forEach(video => {
+
+    video.addEventListener("play", () => {
+        musica.pause();
+    });
+
+    video.addEventListener("pause", () => {
+        musica.play();
+    });
+
+    video.addEventListener("ended", () => {
+        musica.play();
+    });
+
+});
+
+</script>
+
+</body>
+</html>
