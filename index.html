@@ -26,27 +26,26 @@ body {
     padding: 20px;
 }
 
-/* INTRO */
+/* 🔥 INTRO FIX REAL */
 .intro {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%; /* 🔥 evita bug mobile */
     background: black;
     z-index: 9999;
     animation: fadeOut 4s forwards 4.5s;
 }
 
-/* 🔥 CENTRADO PERFECTO */
+/* 🔥 CENTRADO PERFECTO REAL */
 .intro img {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     
-    width: 280px;
-    max-width: 65%;
+    width: min(280px, 70vw); /* 🔥 responsive real */
     height: auto;
 
     animation: blink 1.2s infinite, glow 2s ease-in-out infinite;
