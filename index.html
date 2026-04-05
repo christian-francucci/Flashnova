@@ -11,17 +11,33 @@
 body {
     margin: 0;
     font-family: 'Oswald', sans-serif;
-    background: black;
     color: white;
+    overflow-x: hidden;
 }
 
-/* FONDO */
-.bg {
+/* 🖼️ FONDO IMAGEN (LOGO) */
+.bg-img {
     position: fixed;
     width: 100%;
     height: 100%;
     background: url('fondo.jpg') center/cover no-repeat;
-    filter: brightness(0.3);
+    z-index: -3;
+}
+
+/* 🌑 CAPA OSCURA SUAVE */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -2;
+}
+
+/* 🎆 CANVAS INTERACTIVO */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: -1;
 }
 
@@ -45,7 +61,8 @@ h1 {
 /* GALERÍA */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 300px);
+    justify-content: center;
     gap: 20px;
     padding: 40px;
 }
@@ -53,6 +70,11 @@ h1 {
 .item {
     border-radius: 15px;
     overflow: hidden;
+    transition: 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
 }
 
 .item img,
@@ -68,171 +90,222 @@ h1 {
     padding: 60px;
 }
 
+.live {
+    color: red;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* ECUALIZADOR */
+.eq {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.bar {
+    width: 5px;
+    height: 20px;
+    background: #00ffe1;
+    animation: eq 1s infinite;
+}
+
+.bar:nth-child(2){animation-delay:0.2s;}
+.bar:nth-child(3){animation-delay:0.4s;}
+.bar:nth-child(4){animation-delay:0.6s;}
+
+@keyframes eq {
+    0% {height: 10px;}
+    50% {height: 30px;}
+    100% {height: 10px;}
+}
+
+/* BOTÓN */
 .radio button {
     background: #00ffe1;
     color: black;
     padding: 15px 25px;
     border: none;
     border-radius: 30px;
-    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.radio button:hover {
-    background: white;
-    transform: scale(1.1);
-}
-
-.radio iframe {
-    margin-top: 20px;
-    border-radius: 15px;
 }
 
 /* CONTACTO */
 .contact {
     text-align: center;
-    padding: 40px;
 }
 
-/* WHATSAPP */
-.whatsapp {
+/* INSTAGRAM */
+.insta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* AVATAR */
+.avatar {
     position: fixed;
     bottom: 20px;
-    left: 20px;
-    background: #25D366;
-    padding: 15px;
+    right: 20px;
+    width: 90px;
+    cursor: pointer;
+}
+
+.avatar img {
+    width: 100%;
     border-radius: 50%;
-    color: white;
+    box-shadow: 0 0 20px #00ffe1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="bg"></div>
+<!-- FONDO -->
+<div class="bg-img"></div>
+<div class="overlay"></div>
+<canvas id="bg"></canvas>
 
 <header>
-    <h1>FLASH NOVA</h1>
+<h1>FLASH NOVA</h1>
 </header>
 
 <section class="hero">
-    <h2>si no vende no es creativo</h2>
+<h2>si no vende no es creativo</h2>
 </section>
 
-<!-- 🔥 GALERÍA -->
 <section>
-    <h2 style="text-align:center;">Trabajos</h2>
+<h2 style="text-align:center;">Trabajos</h2>
 
-    <div class="gallery">
+<div class="gallery">
+<div class="item"><img src="foto1.jpg"></div>
+<div class="item"><img src="foto2.jpg"></div>
+<div class="item"><img src="foto3.jpg"></div>
 
-        <!-- 📸 FOTOS -->
-        <div class="item"><img src="foto1.jpg"></div>
-        <div class="item"><img src="foto2.jpg"></div>
-        <div class="item"><img src="foto3.jpg"></div>
-
-        <!-- 🎥 VIDEOS -->
-        <div class="item">
-            <video controls class="video-item">
-                <source src="video.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="item">
-            <video controls class="video-item">
-                <source src="video2.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="item">
-            <video controls class="video-item">
-                <source src="video3.mp4" type="video/mp4">
-            </video>
-        </div>
-
-    </div>
+<div class="item"><video controls class="video-item"><source src="video.mp4"></video></div>
+<div class="item"><video controls class="video-item"><source src="video2.mp4"></video></div>
+<div class="item"><video controls class="video-item"><source src="video3.mp4"></video></div>
+</div>
 </section>
 
-<!-- 📻 RADIO -->
 <section class="radio">
-    <h2>RADIOACTIVA</h2>
-    <p>Sábados de 10 a 12</p>
+<h2>RADIOACTIVA <span class="live">● EN VIVO</span></h2>
 
-    <button onclick="toggleRadio()">▶ ESCUCHAR EN VIVO</button>
+<button onclick="toggleRadio()">▶ ESCUCHAR</button>
 
-    <div id="radioBox" style="display:none;">
-        <iframe 
-            src="https://www.raddios.com/12626-radio-online-infovillegas-fm-905-general-villegas-argentina"
-            width="100%" 
-            height="200"
-            frameborder="0">
-        </iframe>
-    </div>
+<div class="eq">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+
+<div id="radioBox" style="display:none;">
+<iframe src="https://www.raddios.com/12626-radio-online-infovillegas-fm-905-general-villegas-argentina" width="100%" height="200"></iframe>
+</div>
 </section>
 
-<!-- 📞 CONTACTO -->
 <section class="contact">
-    <h2>Contacto</h2>
-    <p>📞 +54 9 3388 415961</p>
-    <p>@flashnova.publicidad</p>
+<h2>Contacto</h2>
+<p>📞 +54 9 3388 415961</p>
+
+<div class="insta">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="20">
+<p>@flashnova.publicidad</p>
+</div>
 </section>
 
-<!-- 🎧 MÚSICA -->
 <audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
+<source src="musica.mp3">
 </audio>
 
-<!-- 💬 WHATSAPP -->
-<a href="https://wa.me/3388529085" class="whatsapp">💬</a>
+<div class="avatar" onclick="hablar()">
+<img src="avatar.jpg">
+</div>
 
 <script>
 
-/* 🎧 MÚSICA AUTOMÁTICA */
+/* MÚSICA */
 const musica = document.getElementById("musica");
+document.addEventListener("click", () => musica.play(), { once:true });
 
-document.addEventListener("click", () => {
-    musica.play().catch(() => {});
-}, { once: true });
-
-/* 🎬 VIDEOS CONTROL */
-const videos = document.querySelectorAll(".video-item");
-
-videos.forEach(video => {
-
-    video.addEventListener("play", () => {
-        musica.pause();
-    });
-
-    video.addEventListener("pause", () => {
-        if (!radioActiva) musica.play();
-    });
-
-    video.addEventListener("ended", () => {
-        if (!radioActiva) musica.play();
-    });
-
+/* VIDEOS */
+document.querySelectorAll(".video-item").forEach(v=>{
+    v.onplay=()=>musica.pause();
+    v.onpause=()=>musica.play();
 });
 
-/* 📻 RADIO */
-let radioActiva = false;
-
-function toggleRadio() {
-    const box = document.getElementById("radioBox");
-    const btn = document.querySelector(".radio button");
-
-    if (!radioActiva) {
-        box.style.display = "block";
-        btn.innerText = "⏸ OCULTAR RADIO";
+/* RADIO */
+let radioActiva=false;
+function toggleRadio(){
+    const box=document.getElementById("radioBox");
+    if(!radioActiva){
+        box.style.display="block";
         musica.pause();
-        radioActiva = true;
+        radioActiva=true;
     } else {
-        box.style.display = "none";
-        btn.innerText = "▶ ESCUCHAR EN VIVO";
-        musica.play().catch(()=>{});
-        radioActiva = false;
+        box.style.display="none";
+        musica.play();
+        radioActiva=false;
     }
 }
+
+/* AVATAR */
+function hablar(){
+    const voz = new SpeechSynthesisUtterance("Flash Nova, creatividad que vende.");
+    voz.lang="es-AR";
+    speechSynthesis.speak(voz);
+}
+
+/* FONDO INTERACTIVO */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<60;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+dx:(Math.random()-0.5)*1.5,
+dy:(Math.random()-0.5)*1.5
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="#00ffe1";
+ctx.fill();
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
 
 </script>
 
