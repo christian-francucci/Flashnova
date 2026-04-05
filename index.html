@@ -218,33 +218,47 @@ body {
 
 <script>
 
-const musica=document.getElementById("musica");
+const musica = document.getElementById("musica");
 
-document.addEventListener("click",()=>musica.play(),{once:true});
+/* 🔊 ACTIVAR AUDIO */
+document.addEventListener("click", () => {
+    musica.play().catch(()=>{});
+}, { once:true });
 
+/* 🔇 FUNCIONES */
+function pausarMusica(){
+    musica.pause();
+}
+
+function reanudarMusica(){
+    musica.play().catch(()=>{});
+}
+
+/* 🎧 RADIO */
 let radio=false;
 
 function toggleRadio(){
-let box=document.getElementById("radioBox");
+    let box=document.getElementById("radioBox");
 
-if(!radio){
-box.style.display="block";
-musica.pause();
-radio=true;
-}else{
-box.style.display="none";
-musica.play();
-radio=false;
+    if(!radio){
+        box.style.display="block";
+        pausarMusica(); // 🔥 clave
+        radio=true;
+    } else {
+        box.style.display="none";
+        reanudarMusica(); // 🔥 clave
+        radio=false;
+    }
 }
-}
 
-const videos=document.querySelectorAll("video");
+/* 🎬 VIDEOS */
+const videos = document.querySelectorAll("video");
 
-videos.forEach(v=>{
-v.addEventListener("play",()=>musica.pause());
-v.addEventListener("pause",()=>musica.play());
+videos.forEach(video=>{
+    video.addEventListener("play", ()=> pausarMusica());   // 🔥 clave
+    video.addEventListener("pause", ()=> reanudarMusica());
+    video.addEventListener("ended", ()=> reanudarMusica());
 });
-
 </script>
 
 </body>
