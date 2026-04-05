@@ -45,7 +45,13 @@ body {
     width: 300px;
     max-width: 80%;
     height: auto;
-    animation: cinematic 3s ease;
+    animation: blink 1.2s infinite;
+}
+
+/* LOGO INTERMITENTE */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
 }
 
 @media (max-width: 600px) {
@@ -54,12 +60,7 @@ body {
     }
 }
 
-/* ANIMACIONES */
-@keyframes cinematic {
-    0% { transform: scale(1.4); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
+/* FADE OUT */
 @keyframes fadeOut {
     to { opacity: 0; visibility: hidden; }
 }
@@ -90,7 +91,7 @@ canvas {
     z-index: -1;
 }
 
-/* LOGO */
+/* LOGO HEADER */
 .logo-header {
     text-align: center;
     margin-top: 30px;
@@ -183,6 +184,14 @@ canvas {
     line-height: 1.8;
 }
 
+.services ul {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+}
+
 /* WHATSAPP */
 .whatsapp-btn {
     position: fixed;
@@ -196,9 +205,8 @@ canvas {
     z-index: 999;
 }
 
-/* 📱 MOBILE PERFECTO */
+/* MOBILE */
 @media (max-width: 768px) {
-
     .row {
         flex-direction: column;
         align-items: center;
@@ -286,9 +294,22 @@ canvas {
 <h2 class="scan">SERVICIOS</h2>
 </div>
 
-<p>
-Estrategia de marca • Branding • Redes sociales • Publicidad digital • Producción audiovisual • Diseño gráfico • Desarrollo web • Copywriting • Campañas publicitarias • Marketing de contenido • Posicionamiento • Lanzamientos • Dirección creativa
-</p>
+<ul>
+<li>• Estrategia de marca</li>
+<li>• Branding e identidad</li>
+<li>• Gestión de redes sociales</li>
+<li>• Publicidad digital</li>
+<li>• Producción audiovisual</li>
+<li>• Fotografía profesional</li>
+<li>• Diseño gráfico</li>
+<li>• Desarrollo web</li>
+<li>• Copywriting</li>
+<li>• Campañas publicitarias</li>
+<li>• Marketing de contenido</li>
+<li>• Posicionamiento de marca</li>
+<li>• Lanzamiento de productos</li>
+<li>• Dirección creativa</li>
+</ul>
 
 </section>
 
@@ -304,7 +325,7 @@ Estrategia de marca • Branding • Redes sociales • Publicidad digital • P
 
 <script>
 
-/* AUDIO FIX */
+/* AUDIO MOBILE FIX */
 const musica = document.getElementById("musica");
 
 function activarAudio() {
@@ -376,3 +397,4 @@ draw();
 </script>
 
 </body>
+</html>
