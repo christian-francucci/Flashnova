@@ -197,6 +197,35 @@ body {
 </div>
 
 <section class="radio">
+<h2>JINGLES/ AUDIO BRANDING</h2>
+
+<div class="jingles">
+
+<div class="jingle">
+<p>EL ÑANDÚ (Contratistas rurales)"</p>
+<audio controls>
+<source src="jingle1.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="jingle">
+<p>AGROCARGO (Empresa hormigonera)</p>
+<audio controls>
+<source src="jingle2.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="jingle">
+<p>OPTICA CRISTAL (Óptica moderna)</p>
+<audio controls>
+<source src="jingle3.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+</div>
+</section>
+
+<section class="radio">
 <h2>"RADIOACTIVA" EL PROGRAMA DE RADIO QUE PRODUCE FLASH NOVA</h2>
 
 <!-- 👉 SOLO ESTO AGREGADO -->
@@ -291,6 +320,27 @@ v.addEventListener("play", pausarMusica);
 v.addEventListener("pause", reanudarMusica);
 v.addEventListener("ended", reanudarMusica);
 });
+
+.jingles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.jingle {
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px #00ffe1;
+}
+
+.jingle p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
 
 </script>
 
