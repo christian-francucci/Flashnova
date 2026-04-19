@@ -79,7 +79,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* GRID IMÁGENES */
+/* GRID */
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -94,7 +94,6 @@ body {
 .item img,
 .item video {
     width: 100%;
-    height: auto;
     border-radius: 10px;
     transition: 0.3s;
 }
@@ -105,19 +104,44 @@ body {
     box-shadow: 0 0 20px #00ffe1;
 }
 
+/* JINGLES */
+.jingles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.jingle {
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px #00ffe1;
+}
+
 /* RADIO */
 .radio {
     text-align: center;
     margin-top: 40px;
 }
 
-/* 👉 SOLO ESTO AGREGADO */
 .avatar {
     width: 130px;
     border-radius: 50%;
     margin: 20px auto;
     display: block;
     box-shadow: 0 0 15px #00ffe1;
+}
+
+.radio-btn {
+    background: #00ffe1;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* CONTACTO */
@@ -152,11 +176,8 @@ body {
     font-weight: bold;
 }
 
-/* MOBILE */
 @media (max-width:768px){
-    .item{
-        width: 90%;
-    }
+    .item{ width: 90%; }
 }
 
 </style>
@@ -173,10 +194,10 @@ body {
 
 <div class="container">
 
-<h2 class="center">SI NO VENDE NO ES CREATIVO</h2>
-<p class="center">Creamos ideas que se convierten en clientes.</p>
+<h2 class="center">SI NO VENDE... NO ES CREATIVO</h2>
+<p class="center">Ideas que se convierten en clientes</p>
 
-<h2 class="center">NUESTROS CLIENTES</h2>
+<h2 class="center">Marcas que ya están creciendo</h2>
 
 <div class="row">
     <div class="item"><img src="foto1.jpg"></div>
@@ -191,47 +212,40 @@ body {
 </div>
 
 <div class="row">
-    <div class="item"><video controls><source src="video.mp4"></video></div>
-    <div class="item"><video controls><source src="video2.mp4"></video></div>
-    <div class="item"><video controls><source src="video3.mp4"></video></div>
+    <div class="item"><video controls src="video.mp4"></video></div>
+    <div class="item"><video controls src="video2.mp4"></video></div>
+    <div class="item"><video controls src="video3.mp4"></video></div>
 </div>
 
 <section class="radio">
-<h2>JINGLES/ AUDIO BRANDING</h2>
+<h2>JINGLES / AUDIO BRANDING</h2>
 
 <div class="jingles">
 
 <div class="jingle">
-<p>EL ÑANDÚ (Contratistas rurales)"</p>
-<audio controls>
-<source src="jingle1.mp3" type="audio/mpeg">
-</audio>
+<p>EL ÑANDÚ</p>
+<audio controls src="jingle1.mp3"></audio>
 </div>
 
 <div class="jingle">
-<p>AGROCARGO (Empresa hormigonera)</p>
-<audio controls>
-<source src="jingle2.mp3" type="audio/mpeg">
-</audio>
+<p>AGROCARGO</p>
+<audio controls src="jingle2.mp3"></audio>
 </div>
 
 <div class="jingle">
-<p>OPTICA CRISTAL (Óptica moderna)</p>
-<audio controls>
-<source src="jingle3.mp3" type="audio/mpeg">
-</audio>
+<p>OPTICA CRISTAL</p>
+<audio controls src="jingle3.mp3"></audio>
 </div>
 
 </div>
 </section>
 
 <section class="radio">
-<h2>"RADIOACTIVA" EL PROGRAMA DE RADIO QUE PRODUCE FLASH NOVA</h2>
+<h2>RADIOACTIVA</h2>
 
-<!-- 👉 SOLO ESTO AGREGADO -->
 <img src="avatar.png" class="avatar">
 
-<button onclick="toggleRadio()">▶ ESCUCHAR "RADIOACTIVA" SÁBADOS DE 10 a 12H.</button>
+<button class="radio-btn" onclick="toggleRadio()">▶ ESCUCHAR</button>
 
 <div id="radioBox" style="display:none;">
 <iframe src="https://www.raddios.com/12626-radio-online-infovillegas-fm-905-general-villegas-argentina" width="100%" height="200"></iframe>
@@ -242,12 +256,6 @@ body {
 <h2>CONTACTO</h2>
 <p>📞 +54 9 3388 529085</p>
 <p>📧 christianfrancucci@gmail.com</p>
-<p>📧 solfrancucci22@gmail.com</p>
-
-<p style="opacity:0.7;">
-Vas a hablar directamente con Sol Francucci, gerenta comercial.
-</p>
-
 <p>@flashnova.publicidad</p>
 </section>
 
@@ -256,30 +264,22 @@ Vas a hablar directamente con Sol Francucci, gerenta comercial.
 
 <div class="services-box">
 <div>• Estrategia de marca</div>
-<div>• Branding e identidad</div>
+<div>• Branding</div>
 <div>• Redes sociales</div>
-<div>• Publicidad digital</div>
+<div>• Publicidad</div>
 <div>• Producción audiovisual</div>
-<div>• Fotografía</div>
-<div>• Diseño gráfico</div>
-<div>• Desarrollo web</div>
-<div>• Copywriting</div>
-<div>• Campañas</div>
-<div>• Posicionamiento</div>
-<div>• Lanzamientos</div>
+<div>• Diseño</div>
 </div>
 
 </section>
 
 </div>
 
-<a href="https://api.whatsapp.com/send?phone=5493388529085&text=Hola%2C%20quiero%20una%20propuesta%20para%20mi%20marca.%20Me%20contacto%20con%20Sol%20Francucci%2C%20gerenta%20comercial." target="_blank" class="whatsapp-btn">
-🚀 Pedí tu propuesta
+<a href="https://api.whatsapp.com/send?phone=5493388529085" target="_blank" class="whatsapp-btn">
+🚀 Contactar
 </a>
 
-<audio id="musica" loop>
-<source src="musica.mp3">
-</audio>
+<audio id="musica" loop src="musica.mp3"></audio>
 
 <script>
 
@@ -300,47 +300,36 @@ function reanudarMusica(){
 let radio=false;
 
 function toggleRadio(){
-let box=document.getElementById("radioBox");
+    let box=document.getElementById("radioBox");
 
-if(!radio){
-box.style.display="block";
-pausarMusica();
-radio=true;
-}else{
-box.style.display="none";
-reanudarMusica();
-radio=false;
-}
+    if(!radio){
+        box.style.display="block";
+        pausarMusica();
+        radio=true;
+    } else {
+        box.style.display="none";
+        reanudarMusica();
+        radio=false;
+    }
 }
 
 const videos=document.querySelectorAll("video");
 
 videos.forEach(v=>{
-v.addEventListener("play", pausarMusica);
-v.addEventListener("pause", reanudarMusica);
-v.addEventListener("ended", reanudarMusica);
+    v.addEventListener("play", pausarMusica);
+    v.addEventListener("pause", reanudarMusica);
+    v.addEventListener("ended", reanudarMusica);
 });
 
-.jingles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+const audios=document.querySelectorAll("audio");
 
-.jingle {
-    background: rgba(0,0,0,0.6);
-    padding: 15px;
-    border-radius: 10px;
-    width: 250px;
-    text-align: center;
-    box-shadow: 0 0 10px #00ffe1;
-}
-
-.jingle p {
-    margin-bottom: 10px;
-    font-size: 14px;
-}
+audios.forEach(a=>{
+    if(a.id !== "musica"){
+        a.addEventListener("play", pausarMusica);
+        a.addEventListener("pause", reanudarMusica);
+        a.addEventListener("ended", reanudarMusica);
+    }
+});
 
 </script>
 
